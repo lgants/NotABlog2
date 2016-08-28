@@ -1,50 +1,38 @@
-WELCOME! This isn't a blog.
+<center><h1>Welcome to our site that is DEFINITELY NOT a blog!</h1></center>
 <p id="notice"><%= notice %></p>
 
-<h1>Notposts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th>Vote Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>Title:<%= post.title %></td>
-        <td>User:<%= post.user_id %></td>
-        <td>Content:<%= post.content %></td>
-        <td>Image:<%= post.image_url %></td>
+<h3>All Not Blog Posts</h3>
 
 
-        <td>
+
+<% @posts.each do |post| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h4><strong><%= post.title %> </strong></h4></div>
+    <div class="panel-body">
+      <h4><%= post.content %> </h4>
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item">Posted by <%= post.user.username %> on <%= post.created_at.strftime("%B %d, %Y at %I:%M %p %Z") %> </li>
+      <li class="list-group-item">
+        <div>
+        <strong> Votes <%= post.get_upvotes.size %> </strong>
         <%= form_for(@vote) do |f| %>
-        <%= f.button "Upvote" %>
-        <%= f.hidden_field :vote_type, :value => "upvote" %>
-        <%= f.hidden_field :post_id, :value => post.id %>
-        <% end %></td>
-        <td>
+          <%= f.button class: "btn btn-primary btn-sm" do %>
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Upvote 
+          <% end %>
+          <%= f.hidden_field :vote_type, :value => "upvote" %>
+          <%= f.hidden_field :post_id, :value => post.id %>
+        <% end %>
         <%= form_for(@vote) do |f| %>
-        <%= f.button "Downvote" %>
-        <%= f.hidden_field :vote_type, :value => "downvote" %>
-        <%= f.hidden_field :post_id, :value => post.id %>
-        <% end %></td>
-
-        <%= post.title %> <%= post.get_upvotes.size %>
-
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
- 
+          <%= f.button class: "btn btn-primary btn-sm" do %>
+            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Downvote
+          <% end %>
+          <%= f.hidden_field :vote_type, :value => "downvote" %>
+          <%= f.hidden_field :post_id, :value => post.id %>
+        <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+<% end %>
