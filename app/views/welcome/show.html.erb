@@ -18,29 +18,26 @@ WELCOME! This isn't a blog.
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.user_id %></td>
-        <td><%= post.content %></td>
-        <td><%= post.image_url %></td>
-            <% acc = 0 %>
-        <td><% post.votes.each do |vote_object|%></td>
-            <% acc += vote_object.value%>
-              <% end %>
-        <td><%= acc %></td>
+        <td>Title:<%= post.title %></td>
+        <td>User:<%= post.user_id %></td>
+        <td>Content:<%= post.content %></td>
+        <td>Image:<%= post.image_url %></td>
 
 
+        <td>
         <%= form_for(@vote) do |f| %>
         <%= f.button "Upvote" %>
-        <%= f.hidden_field :value, :value => 1  %>
+        <%= f.hidden_field :vote_type, :value => "upvote" %>
         <%= f.hidden_field :post_id, :value => post.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <% end %>
+        <% end %></td>
+        <td>
         <%= form_for(@vote) do |f| %>
         <%= f.button "Downvote" %>
-        <%= f.hidden_field :value, :value => -1 %>
+        <%= f.hidden_field :vote_type, :value => "downvote" %>
         <%= f.hidden_field :post_id, :value => post.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <% end %>
+        <% end %></td>
+
+        <%= post.title %> <%= post.get_upvotes.size %>
 
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
