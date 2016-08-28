@@ -6,9 +6,11 @@ WELCOME! This isn't a blog.
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>User</th>
       <th>Content</th>
       <th>Image</th>
+      <th>Vote Value</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +18,30 @@ WELCOME! This isn't a blog.
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td><%= post.title %></td>
         <td><%= post.user_id %></td>
         <td><%= post.content %></td>
-        <td><%= post.image %></td>
+        <td><%= post.image_url %></td>
+            <% acc = 0 %>
+        <td><% post.votes.each do |vote_object|%></td>
+            <% acc += vote_object.value%>
+              <% end %>
+        <td><%= acc %></td>
+
+
+        <%= form_for(@vote) do |f| %>
+        <%= f.button "Upvote" %>
+        <%= f.hidden_field :value, :value => 1  %>
+        <%= f.hidden_field :post_id, :value => post.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <% end %>
+        <%= form_for(@vote) do |f| %>
+        <%= f.button "Downvote" %>
+        <%= f.hidden_field :value, :value => -1 %>
+        <%= f.hidden_field :post_id, :value => post.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <% end %>
+
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

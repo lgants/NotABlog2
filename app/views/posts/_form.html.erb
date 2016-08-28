@@ -73,7 +73,12 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :content, "Create not a post" %>
+    <%= f.label :title, "Not post title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content, "Create a not post" %>
     <%= f.text_area :content, class: "form-control" %>
   </div>
     <%= f.submit %>
