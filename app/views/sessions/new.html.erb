@@ -1,10 +1,24 @@
 <%= form_for @user, url: {controller: "sessions", action: "create"} do |f| %>
-<div>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "sign in" %>
-
+  <div class="container">
+  <div class="col-lg-1 col-centered"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Sign In</strong></div>
+    <div class="panel-body">
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="actions">
+        <%= f.button class: "btn btn-primary btn-sm" do %>
+          Sign In
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 <% end %>
