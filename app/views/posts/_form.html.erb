@@ -1,64 +1,3 @@
-<!-- <form> -->
-
-  <!-- <div class="form-group">
-    <label for="exampleSelect1">Example select</label>
-    <select class="form-control" id="exampleSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div> -->
-  <!-- <div class="form-group">
-    <label for="exampleTextarea">What are you not blogging about?</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </div> -->
-  <!-- <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-  </div> -->
-  <!-- <fieldset class="form-group">
-    <legend>Radio buttons</legend>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-        Option one is this and that&mdash;be sure to include why it's great
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-        Option two can be something else and selecting it will deselect option one
-      </label>
-    </div>
-    <div class="radio disabled">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-        Option three is disabled
-      </label>
-    </div>
-  </fieldset> -->
-  <!-- <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div> -->
-  <!-- <button type="submit" class="btn btn-primary" action="/posts" method="create">Submit</button> -->
-  <!-- <input type="submit" name="name" value="Create Post" action="/posts" method="post">
-</form> -->
-
 
 <%= form_for(post) do |f| %>
   <% if post.errors.any? %>
@@ -83,6 +22,19 @@
       <%= f.label :content, "Create a not post" %>
       <%= f.text_area :content, class: "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :image_url, "Add an image(URL)" %>
+      <%= f.text_field :image_url, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :post_image, "Add an image"%>
+      <%= f.file_field :post_image %>
+    </div>
+    <br>
+
+
     <%= f.submit class: "btn btn-primary btn-sm"%>
   </div>
 <% end %>

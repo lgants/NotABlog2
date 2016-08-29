@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @user.avatar.url(:medium) %>
+  <% if @user.avatar.file? %>
+    <%= image_tag @user.avatar.url(:medium) %>
+  <% end %>
+  <%= "Picture Missing! Upload an Avatar Picture"%>
 </p>
 
 

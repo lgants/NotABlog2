@@ -7,6 +7,11 @@
   <div class="panel panel-default">
     <div class="panel-heading"><h4><strong><%= post.title %> </strong></h4></div>
     <div class="panel-body">
+      <img src="<%=post.image_url %>" alt="" />
+      <% if post.post_image.file? %>
+        <%=image_tag post.post_image.url(:medium) %>
+      <% end %>
+
       <h4><%= post.content %> </h4>
     </div>
     <!-- List group -->
