@@ -24,7 +24,7 @@
         <strong> Votes <%= post.vote_sum%> </strong>
         <% if signed_in? %>
           <%= form_for(@vote) do |f| %>
-            <%= f.submit class: "btn btn-primary btn-sm" do %>
+            <%= f.button class: "btn btn-primary btn-sm" do %>
               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Upvote
             <% end %>
             <%= f.hidden_field :value, :value => 1 %>
@@ -33,7 +33,7 @@
           <% end %>
           <!-- Downvote Button -->
           <%= form_for(@vote) do |f| %>
-            <%= f.submit class: "btn btn-primary btn-sm" do %>
+            <%= f.button class: "btn btn-primary btn-sm" do %>
               <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Downvote
             <% end %>
             <%= f.hidden_field :value, :value => -1 %>

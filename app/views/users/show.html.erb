@@ -1,34 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <% if @user.avatar.file? %>
-    <%= image_tag @user.avatar.url(:medium) %>
-  <% else %>
-  <%= "Picture Missing! Upload an Avatar Picture"%>
-  <% end %>
-</p>
 
+<div class="panel panel-default">
+  <div class="panel-body">
+  <p>
+    <% if @user.avatar.file? %>
+      <%= image_tag @user.avatar.url(:medium) %>
+    <% else %>
+    <%= "Picture Missing! Upload an Avatar Picture"%>
+    <% end %>
+  </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+  <div class="field">
+  <p>
+    <strong>First name:</strong>
+    <%= @user.first_name %>
+  </p>
+  </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <div class="field">
+  <p>
+    <strong>Last name:</strong>
+    <%= @user.last_name %>
+  </p>
+  </div>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <div class="btn btn-primary btn-sm">
+  <%= link_to 'Edit', edit_user_path(@user) %>
+  </div>
+  </div>
+</div>
