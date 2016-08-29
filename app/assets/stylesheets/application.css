@@ -1,7 +1,7 @@
 /*
  *= require font-awesome
  */
- 
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -1106,7 +1106,7 @@
    font-size: 14px;
    line-height: 1.42857143;
    color: #333;
-   background-color: #fff;
+   background-color: #e0dfdf;
  }
  input,
  button,
@@ -4513,11 +4513,11 @@
    }
  }
  .navbar-default {
-   background-color: #f8f8f8;
+   background-color: #cfd4d4;
    border-color: #e7e7e7;
  }
  .navbar-default .navbar-brand {
-   color: #777;
+   color: #337ab7;
  }
  .navbar-default .navbar-brand:hover,
  .navbar-default .navbar-brand:focus {
@@ -4528,7 +4528,7 @@
    color: #777;
  }
  .navbar-default .navbar-nav > li > a {
-   color: #777;
+   color: #337ab7;
  }
  .navbar-default .navbar-nav > li > a:hover,
  .navbar-default .navbar-nav > li > a:focus {

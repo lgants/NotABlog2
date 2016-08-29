@@ -1,11 +1,9 @@
-<center><h1>Welcome to our site that is DEFINITELY NOT a blog!</h1></center>
+<!-- <center><h1>Welcome to our site that is DEFINITELY NOT a blog!</h1></center> -->
 <p id="notice"><%= notice %></p>
 
-<h3>All Not Blog Posts</h3>
+<!-- <h3>NotBlog Posts</h3> -->
 
-
-
-<% @posts.each do |post| %>
+<% @sorted_posts.each do |post| %>
   <div class="panel panel-default">
     <div class="panel-heading"><h4><strong><%= post.title %> </strong></h4></div>
     <div class="panel-body">
@@ -19,7 +17,7 @@
         <strong> Votes <%= post.get_upvotes.size %> </strong>
         <%= form_for(@vote) do |f| %>
           <%= f.button class: "btn btn-primary btn-sm" do %>
-            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Upvote 
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Upvote
           <% end %>
           <%= f.hidden_field :vote_type, :value => "upvote" %>
           <%= f.hidden_field :post_id, :value => post.id %>
