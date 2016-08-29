@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829015345) do
+ActiveRecord::Schema.define(version: 20160829145220) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -47,19 +47,9 @@ ActiveRecord::Schema.define(version: 20160829015345) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.string   "votable_type"
-    t.integer  "votable_id"
-    t.string   "voter_type"
-    t.integer  "voter_id"
-    t.boolean  "vote_flag"
-    t.string   "vote_scope"
-    t.integer  "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.integer "user_id"
+    t.integer "post_id"
+    t.integer "value",   default: 0
   end
 
 end

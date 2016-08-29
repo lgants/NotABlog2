@@ -21,22 +21,24 @@
       <div>
 
         <!-- Upvote Button -->
-        <strong> Votes <%= post.get_upvotes.size %> </strong>
+        <strong> Votes <%= post.vote_sum%> </strong>
         <% if signed_in? %>
           <%= form_for(@vote) do |f| %>
-            <%= f.button class: "btn btn-primary btn-sm" do %>
+            <%= f.submit class: "btn btn-primary btn-sm" do %>
               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Upvote
             <% end %>
-            <%= f.hidden_field :vote_type, :value => "upvote" %>
+            <%= f.hidden_field :value, :value => 1 %>
             <%= f.hidden_field :post_id, :value => post.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
           <% end %>
           <!-- Downvote Button -->
           <%= form_for(@vote) do |f| %>
-            <%= f.button class: "btn btn-primary btn-sm" do %>
+            <%= f.submit class: "btn btn-primary btn-sm" do %>
               <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> Downvote
             <% end %>
-            <%= f.hidden_field :vote_type, :value => "downvote" %>
+            <%= f.hidden_field :value, :value => -1 %>
             <%= f.hidden_field :post_id, :value => post.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
           <% end %>
         <% end %>
         </div>
