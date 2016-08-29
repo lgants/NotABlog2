@@ -225,9 +225,11 @@
    a,
    a:visited {
      text-decoration: underline;
+     color: #fff;
    }
    a[href]:after {
      content: " (" attr(href) ")";
+     color: #fff;
    }
    abbr[title]:after {
      content: " (" attr(title) ")";
@@ -1121,7 +1123,7 @@
    line-height: inherit;
  }
  a {
-   color: #337ab7;
+   color: white;
    text-decoration: none;
  }
  a:hover,
