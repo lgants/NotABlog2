@@ -3,8 +3,9 @@
 <p>
   <% if @user.avatar.file? %>
     <%= image_tag @user.avatar.url(:medium) %>
-  <% end %>
+  <% else %>
   <%= "Picture Missing! Upload an Avatar Picture"%>
+  <% end %>
 </p>
 
 
