@@ -1,13 +1,14 @@
 class VotesController < ApplicationController
 
+
   def create
-    post = Post.find(params[:vote][:post_id])
-    if params[:vote][:vote_type] == "upvote"
-      post.upvote_by current_user
-      redirect_to root_path
-    elsif params[:vote][:vote_type] == "downvote"
-      post.downvote_by current_user
-      redirect_to root_path
+    if vote = Vote.find_by(user_id: params[:vote][:user_id], post_id: params[:vote][:post_id])
+      vote.update(value: params[:vote][:value])
+      redirect_to root_path, notice: "Vote updated!"
+    else
+      vote = Vote.create(user_id: params[:vote][:user_id], post_id: params[:vote][:post_id], value: params[:vote][:value])
+      redirect_to root_path, notice: "Vote created!"
     end
   end
+
 end
