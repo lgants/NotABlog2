@@ -1,3 +1,3 @@
 
 # NotABlog2
-Definitely Not A Blog with gem
+Definitely Not A Blog.
